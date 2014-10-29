@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: b76bca79f23cea246b0d4cb7d04449b9
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: img001_0
+    21300002: img001_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,9 +27,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -42,6 +44,26 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: img001_0
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 1945
+        width: 1951
+        height: 1105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: img001_1
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 269
+        width: 2138
+        height: 1305
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
