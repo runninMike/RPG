@@ -4,6 +4,10 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: img001_0
     21300002: img001_1
+    21300004: img001_2
+    21300006: img001_3
+    21300008: img001_4
+    21300010: img001_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,7 +27,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -2
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -48,22 +52,62 @@ TextureImporter:
     - name: img001_0
       rect:
         serializedVersion: 2
-        x: 214
-        y: 1945
-        width: 1951
-        height: 1105
+        x: 0
+        y: 1650
+        width: 850
+        height: 1650
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: img001_1
       rect:
         serializedVersion: 2
-        x: 243
-        y: 269
-        width: 2138
-        height: 1305
+        x: 850
+        y: 1650
+        width: 850
+        height: 1650
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: img001_2
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1650
+        width: 850
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: img001_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 850
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: img001_4
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 0
+        width: 850
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: img001_5
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 0
+        width: 850
+        height: 1650
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

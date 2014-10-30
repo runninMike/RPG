@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MainMenu\Scripts\MenuScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Important Scripts\EnemyController.cs">
     <Files>
-      <File FileName="Assets\MainMenu\Scripts\MenuScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Important Scripts\PlayerController.cs" Line="57" Column="39" />
+      <File FileName="Assets\Important Scripts\SpriteAnimation.cs" Line="15" Column="50" />
+      <File FileName="Assets\Important Scripts\EnemyController.cs" Line="26" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
