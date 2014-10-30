@@ -13,8 +13,13 @@ public class Collider : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision col){
-				if (col.gameObject.name == "Door")
-						Debug.Log("A DOOR");
-		}
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.tag == "Door")
+			Debug.Log("A DOOR");
+	}
+
+	void OncollisionStay2D(Collision2D col){
+		if (col.gameObject.tag == "Door")
+			Debug.Log ("Touching the DOOR");
+	}
 }
