@@ -46,12 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Collider.cs" />
      <Compile Include="Assets\Important Scripts\EnemyController.cs" />
      <Compile Include="Assets\Important Scripts\PlayerController.cs" />
      <Compile Include="Assets\Important Scripts\SpriteAnimation.cs" />
      <Compile Include="Assets\MainMenu\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
+     <None Include="Assets\Tiled2Unity\Imported\hyrule3.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Prefabs\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Shaders\shaTiledMap.shader" />
      <None Include="Assets\Tiled2Unity\Imported\hyrule.tiled2unity.xml" />
