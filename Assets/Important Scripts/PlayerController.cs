@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour {
 		*/	
 		if(!isColliding)
 			allowMovement();
+
+		//lets the player move in any other direction if stuck, but it's crazy
+		//glitchy, there's probably a better way of handling this.
+		else if (isColliding && SpriteAnimation.currentTravelDirection != currentTravelDirection)
+			allowMovement ();
 	}
 
 
@@ -85,11 +90,10 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Door"){
+
 			stopMovement();
 			Debug.Log ("STOP!");
 		}
-
-		//CheckInput();
 	}
 
 	void OnCollisionExit2D(Collision2D col){
@@ -108,6 +112,7 @@ public class PlayerController : MonoBehaviour {
 	}
 		
 	void allowMovement(){
+		isColliding = false;
 		transform.position = pos;
 		SpriteAnimation.currentTravelDirection = currentTravelDirection;
 		SpriteAnimation.isStandingStill = !moving;
