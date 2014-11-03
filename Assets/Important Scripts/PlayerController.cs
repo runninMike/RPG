@@ -3,120 +3,80 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	
-	public float speed = 1.0f;	
-
-	bool isColliding = false;
+	Vector2 position;
+	float speed = 1.0f;	
 	
+	public float Speed{
+		get{ return speed; }
+		set{ 
+			speed = value;
+			GetComponentInChildren<GhostController>().speed = value;
+		}
+	}
+
 	void Start(){
 		// First store our current position when the
 		// script is initialized.
-		pos = transform.position;
+		position = transform.position;
 		SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
 		SpriteAnimation.isStandingStill = true;
 	}
 
 	void Update(){
-		CheckInput();
-
-		// allow collider event to happen.
-
-		/*
-		if(isCollWithDoor){
-			transform.position = previousPos;
-			moving = false;
-		}
-
-		if (moving) {
-			// pos is changed when there's input from the player
-			transform.position = pos;
-		} 
-		else {
-			SpriteAnimation.isStandingStill = true;
-		}
-		*/	
-		if(!isColliding)
-			allowMovement();
-
-		//lets the player move in any other direction if stuck, but it's crazy
-		//glitchy, there's probably a better way of handling this.
-		else if (isColliding && SpriteAnimation.currentTravelDirection != currentTravelDirection)
-			allowMovement ();
+		GetComponentInChildren<GhostController>().UpdateMovement();	
+	
+		if(!GetComponentInChildren<GhostController>().isCollisionTrigger)
+			ProcessInput();
+		else
+			stopMovement();
 	}
-
-
-
-
-	SpriteAnimation.travelDirection currentTravelDirection;
-	private Vector2 pos;
-	private Vector2 previousPos;
-	private bool moving = false;
-
-	private void CheckInput() {
-		//SpriteAnimation.isStandingStill = false;
-		previousPos = transform.position;
-		
-		// WASD control
-		// We add the direction to our position,
-		// this moves the character 1 unit (32 pixels)
+	
+	private void ProcessInput(){		
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-			pos += Vector2.right * speed;
-			currentTravelDirection = SpriteAnimation.travelDirection.RIGHT;
-			moving = true;
+			position += Vector2.right * speed;
+			allowMovement(KeyCode.D, position);
 		}
-		
-		// For left, we have to subtract the direction
 		else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-			pos -= Vector2.right * speed;
-			currentTravelDirection = SpriteAnimation.travelDirection.LEFT;
-			moving = true;
+			position -= Vector2.right * speed;
+			allowMovement(KeyCode.A, position);
 		}
 		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-			pos += Vector2.up * speed;
-			currentTravelDirection = SpriteAnimation.travelDirection.UP;
-			moving = true;
+			position += Vector2.up * speed;
+			allowMovement(KeyCode.W, position);
 		}
-		
-		// Same as for the left, subtraction for down
 		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
-			pos -= Vector2.up * speed;
-			currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
-			moving = true;
+			position -= Vector2.up * speed;
+			allowMovement(KeyCode.S, position);
 		}
 		else{
-			moving = false;
-		}
-	}
-
-
-	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.tag == "Door"){
-
 			stopMovement();
-			Debug.Log ("STOP!");
 		}
 	}
-
-	void OnCollisionExit2D(Collision2D col){
-		isColliding = false;
-		//if(col.gameObject.tag == "Door"){
-			allowMovement();
-			Debug.Log("moving along");
-		//}
-	}
-
+	
 
 	void stopMovement(){
-		isColliding = true;
-		transform.position = previousPos;
 		SpriteAnimation.isStandingStill = true;
 	}
 		
-	void allowMovement(){
-		isColliding = false;
-		transform.position = pos;
-		SpriteAnimation.currentTravelDirection = currentTravelDirection;
-		SpriteAnimation.isStandingStill = !moving;
+	public void allowMovement(KeyCode keyPressed, Vector2 newPosition){
+		if (keyPressed == KeyCode.D){
+			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.RIGHT;
+		}
+		else if (keyPressed == KeyCode.A){
+			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.LEFT;
+		}
+		else if (keyPressed == KeyCode.W){
+			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.UP;
+		}		
+		else if (keyPressed == KeyCode.S){
+			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
+		}
+		SpriteAnimation.isStandingStill = false;
+
+		transform.position = newPosition;
 	}
+
+
 }
 
 

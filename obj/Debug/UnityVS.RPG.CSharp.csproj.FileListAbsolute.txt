@@ -1,0 +1,11 @@
+G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\Assembly-UnityScript-firstpass.dll
+G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\UnityEditor.dll
+G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\UnityEngine.dll
+G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
+G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\UnityEngine.xml
+G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\UnityEditor.xml
+G:\mikeRpg\RPG\obj\Debug\UnityVS.RPG.CSharp.csprojResolveAssemblyReference.cache
+G:\mikeRpg\RPG\obj\Debug\Assembly-CSharp.dll
+G:\mikeRpg\RPG\obj\Debug\Assembly-CSharp.pdb
