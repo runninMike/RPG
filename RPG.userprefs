@@ -1,14 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Important Scripts\PlayerController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Important Scripts\Inventory.cs">
     <Files>
-      <File FileName="Assets\Important Scripts\PlayerController.cs" Line="94" Column="2" />
+      <File FileName="Assets\Important Scripts\Inventory.cs" Line="24" Column="3" />
+      <File FileName="Assets\Important Scripts\ItemDatabase.cs" Line="6" Column="45" />
+      <File FileName="Assets\Important Scripts\Item.cs" Line="10" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="F:\mikeRpg\RPG\Assets\Important Scripts\PlayerController.cs" line="96" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
