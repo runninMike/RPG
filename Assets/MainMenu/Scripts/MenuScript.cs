@@ -32,7 +32,7 @@ public class MenuScript : MonoBehaviour
 		{
 			// Load first level on click
 			//Level1 is a test name
-			Application.LoadLevel("testScene2");
+			Application.LoadLevel("testScene3");
 		}
 	}
 }

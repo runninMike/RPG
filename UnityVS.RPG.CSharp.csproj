@@ -62,7 +62,9 @@
   <ItemGroup>
     <Compile Include="Assets\Collider.cs" />
     <Compile Include="Assets\Important Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Important Scripts\GameMasterController.cs" />
     <Compile Include="Assets\Important Scripts\GhostController.cs" />
+    <Compile Include="Assets\Important Scripts\HitRoll.cs" />
     <Compile Include="Assets\Important Scripts\Inventory.cs" />
     <Compile Include="Assets\Important Scripts\Item.cs" />
     <Compile Include="Assets\Important Scripts\ItemDatabase.cs" />
