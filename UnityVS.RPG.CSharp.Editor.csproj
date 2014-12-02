@@ -92,6 +92,7 @@
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Imported\hyrule.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\hyrule3.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\ourMap.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Materials\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Meshes\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Prefabs\_ReadMe.txt" />

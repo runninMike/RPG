@@ -59,6 +59,7 @@
      <Compile Include="Assets\MainMenu\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
+     <None Include="Assets\Tiled2Unity\Imported\ourMap.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\hyrule3.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Prefabs\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Shaders\shaTiledMap.shader" />
