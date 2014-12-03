@@ -9,3 +9,14 @@ G:\mikeRpg\RPG\Temp\UnityVS_bin\Debug\UnityEditor.xml
 G:\mikeRpg\RPG\obj\Debug\UnityVS.RPG.CSharp.csprojResolveAssemblyReference.cache
 G:\mikeRpg\RPG\obj\Debug\Assembly-CSharp.dll
 G:\mikeRpg\RPG\obj\Debug\Assembly-CSharp.pdb
+E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\Assembly-UnityScript-firstpass.dll
+E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\UnityEditor.dll
+E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\UnityEngine.dll
+E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
+E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\UnityEngine.xml
+E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\UnityEditor.xml
+E:\Documents\GitHub\RPG\obj\Debug\UnityVS.RPG.CSharp.csprojResolveAssemblyReference.cache
+E:\Documents\GitHub\RPG\obj\Debug\Assembly-CSharp.dll
+E:\Documents\GitHub\RPG\obj\Debug\Assembly-CSharp.pdb
