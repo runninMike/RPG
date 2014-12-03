@@ -24,7 +24,6 @@ public class HitRoll : MonoBehaviour {
     {
         Random.seed = System.DateTime.UtcNow.Millisecond;
         RollResult = Random.Range(0, 6) + 1;
-
         //Debug.Log(RollResult);
     }
     
