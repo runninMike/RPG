@@ -15,7 +15,7 @@ public class GhostController : MonoBehaviour {
 		speed = this.transform.parent.GetComponent<PlayerController>().Speed;
 	}
 
-	void Update(){}
+	//void Update(){}
 
 	KeyCode keyPressed;
 	public void UpdateMovement(){
