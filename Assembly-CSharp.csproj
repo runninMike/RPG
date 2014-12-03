@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{2EECCFB3-C49F-C25C-C016-B884E14F760C}</ProjectGuid>
+	<ProjectGuid>{0BE8E511-D506-A1D0-E67D-923A5ED26D39}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Collider.cs" />
+     <Compile Include="Assets\Important Scripts\BattleScript.cs" />
      <Compile Include="Assets\Important Scripts\EnemyController.cs" />
      <Compile Include="Assets\Important Scripts\GameMasterController.cs" />
      <Compile Include="Assets\Important Scripts\GhostController.cs" />
@@ -71,9 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{A8C8DC48-1FEC-1D55-F509-E1CDF7717E2E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{60FF69C5-FB93-DB0D-E4B0-6B9EF11DA4B3}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{58F14647-7AC3-C252-94AA-F28050B24F84}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+      <Project>{BB8C729D-4D7B-776F-D180-698EE7D10A85}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

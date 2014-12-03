@@ -45,19 +45,19 @@ public class BattleScript : MonoBehaviour
                 //this is the players dice roll
                 GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
                 roll1 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
-                print(roll1);
+                Debug.Log("player: " + roll1);
 
                 //enemy's dice roll
                 GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
                 roll2 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
-                print(roll2);
+                Debug.Log("enemy: " + roll2);
 
                 //checks if player hits or not
                 if (roll1 >= roll2)
                     enemyHP -= 25;
 
                 else
-                    print("You missed!");
+                    Debug.Log("You missed!");
 
                 isPlayerTurn = false;
             }
@@ -66,22 +66,23 @@ public class BattleScript : MonoBehaviour
         //enemy turn
         while (!isPlayerTurn)
         {
+
+			//enemy's dice roll
+            GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
+            roll2 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
+            Debug.Log("enemy: " + roll2);
+
             //this is the players dice roll
             GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
             roll1 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
-            print(roll1);
-
-            //enemy's dice roll
-            GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
-            roll2 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
-            print(roll2);
-
+            Debug.Log("player: " + roll1);
+			            
             //checks if enemy hits or not
             if (roll2 >= roll1)
                 playerHP -= 10;
 
             else
-                print("They missed!");
+                 Debug.Log("Enemy missed!");
 
             isPlayerTurn = true;
         }
