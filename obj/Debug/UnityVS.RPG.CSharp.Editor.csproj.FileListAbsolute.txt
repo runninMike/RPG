@@ -1,0 +1,17 @@
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp-Editor.dll
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp-Editor.pdb
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\Assembly-UnityScript-firstpass.dll
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\SyntaxTree.VisualStudio.Unity.Bridge.dll
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\SyntaxTree.VisualStudio.Unity.Messaging.dll
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\UnityEditor.dll
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\UnityEditor.Graphs.dll
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\UnityEngine.dll
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\UnityVS.VersionSpecific.dll
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\UnityEngine.xml
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\UnityEditor.xml
+G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\UnityEditor.Graphs.xml
+G:\cs16UnityProject\RPG\obj\Debug\UnityVS.RPG.CSharp.Editor.csprojResolveAssemblyReference.cache
+G:\cs16UnityProject\RPG\obj\Debug\Assembly-CSharp-Editor.dll
+G:\cs16UnityProject\RPG\obj\Debug\Assembly-CSharp-Editor.pdb

@@ -47,7 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Collider.cs" />
+     <Compile Include="Assets\Important Scripts\AIGhostController.cs" />
+     <Compile Include="Assets\Important Scripts\AiNpcController.cs" />
      <Compile Include="Assets\Important Scripts\BattleScript.cs" />
+     <Compile Include="Assets\Important Scripts\Die.cs" />
      <Compile Include="Assets\Important Scripts\EnemyController.cs" />
      <Compile Include="Assets\Important Scripts\GameMasterController.cs" />
      <Compile Include="Assets\Important Scripts\GhostController.cs" />
@@ -55,8 +58,10 @@
      <Compile Include="Assets\Important Scripts\Inventory.cs" />
      <Compile Include="Assets\Important Scripts\Item.cs" />
      <Compile Include="Assets\Important Scripts\ItemDatabase.cs" />
+     <Compile Include="Assets\Important Scripts\NpcMoveRoll.cs" />
      <Compile Include="Assets\Important Scripts\PlayerController.cs" />
      <Compile Include="Assets\Important Scripts\SpriteAnimation.cs" />
+     <Compile Include="Assets\Important Scripts\Stats.cs" />
      <Compile Include="Assets\MainMenu\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
