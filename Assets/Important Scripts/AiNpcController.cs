@@ -6,6 +6,16 @@ public class AiNpcController : MonoBehaviour {
 	Vector2 position;
 	float speed = 1.0f;	
 	
+	
+	// control movement direction
+	public float minSecond = 1.0f;
+	public float maxSecond = 2.0f;
+	float travelDirectionTimer;
+	float travelTime = 0.0f;
+
+	SpriteAnimation.travelDirection direction;
+
+
 	public float Speed{
 		get{ return speed; }
 		set{ 
@@ -20,15 +30,51 @@ public class AiNpcController : MonoBehaviour {
 		position = transform.position;
 		SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
 		SpriteAnimation.isStandingStill = true;
+
+		Random.seed = System.DateTime.Now.Millisecond;
+		travelDirectionTimer = Random.Range(minSecond, maxSecond);
+		travelTime += travelDirectionTimer + 1.0f;
 	}
 
 	void Update(){
+		travelTime += Time.deltaTime;
+
+		if(travelTime >= travelDirectionTimer){
+			SpriteAnimation.isStandingStill = false;
+
+			// roll 
+			GameObject.FindGameObjectWithTag("NpcMoveRoll").GetComponent<NpcMoveRoll>().Roll();
+			switch(GameObject.FindGameObjectWithTag("NpcMoveRoll").GetComponent<NpcMoveRoll>().RollResult){
+				case 1:		
+					direction = SpriteAnimation.travelDirection.UP;
+					break;
+
+				case 3:
+					direction = SpriteAnimation.travelDirection.DOWN;
+					break;
+
+				case 5:
+					direction = SpriteAnimation.travelDirection.LEFT;
+					break;
+
+				case 7:
+					direction = SpriteAnimation.travelDirection.RIGHT;
+					break;
+
+				default:
+					direction = SpriteAnimation.travelDirection.STAND;
+					break;
+			}
+
+		}
+
 		GetComponentInChildren<AIGhostController>().UpdateMovement();	
 	
-		if(!GetComponentInChildren<AIGhostController>().isCollisionTrigger)
-			ProcessInput();
+		if(GetComponentInChildren<AIGhostController>().isCollisionTrigger)
+			ReverseMovement();
 		else
-			stopMovement();
+			ProcessInput();
+
 	}
 	
 	private void ProcessInput(){		
@@ -48,30 +94,19 @@ public class AiNpcController : MonoBehaviour {
 			position -= Vector2.up * speed;
 			allowMovement(KeyCode.S, position);
 		}
-		else{
-			stopMovement();
-		}
+
 	}
 	
 
-	void stopMovement(){
+	void ReverseMovement(){
 		SpriteAnimation.isStandingStill = true;
 	}
 		
-	public void allowMovement(KeyCode keyPressed, Vector2 newPosition){
-		if (keyPressed == KeyCode.D){
-			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.RIGHT;
-		}
-		else if (keyPressed == KeyCode.A){
-			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.LEFT;
-		}
-		else if (keyPressed == KeyCode.W){
-			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.UP;
-		}		
-		else if (keyPressed == KeyCode.S){
-			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
-		}
-		SpriteAnimation.isStandingStill = false;
+	public void allowMovement(SpriteAnimation.travelDirection dir, Vector2 newPosition){
+		if (dir == SpriteAnimation.travelDirection.STAND)
+			SpriteAnimation.isStandingStill = false;
+		else			
+			SpriteAnimation.currentTravelDirection = dir;
 
 		transform.position = newPosition;
 	}

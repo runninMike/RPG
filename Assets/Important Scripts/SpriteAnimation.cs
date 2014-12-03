@@ -9,7 +9,7 @@ public class SpriteAnimation : MonoBehaviour{
 	public static bool isStandingStill = false;
 
 	// the sprite current travling direction
-	public enum travelDirection{ DOWN, LEFT, RIGHT, UP };
+	public enum travelDirection{ DOWN, LEFT, RIGHT, UP, STAND};
 	public static travelDirection currentTravelDirection;  
 
 	// enum based on how unity split the spritesheet
