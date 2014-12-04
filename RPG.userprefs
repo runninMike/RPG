@@ -1,12 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Important Scripts\AiNpcController.cs">
-    <Files>
-      <File FileName="Assets\Important Scripts\AiNpcController.cs" Line="40" Column="2" />
-      <File FileName="Assets\Important Scripts\AIGhostController.cs" Line="41" Column="29" />
-      <File FileName="Assets\Important Scripts\AiEnemyController.cs" Line="61" Column="64" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
