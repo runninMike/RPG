@@ -16,12 +16,3 @@ G:\cs16UnityProject\RPG\Temp\UnityVS_bin\Debug\UnityEditor.xml
 G:\cs16UnityProject\RPG\obj\Debug\UnityVS.RPG.CSharp.Plugins.csprojResolveAssemblyReference.cache
 G:\cs16UnityProject\RPG\obj\Debug\Assembly-CSharp-firstpass.dll
 G:\cs16UnityProject\RPG\obj\Debug\Assembly-CSharp-firstpass.pdb
-E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.dll
-E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
-E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\UnityEditor.dll
-E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\UnityEngine.dll
-E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\UnityEngine.xml
-E:\Documents\GitHub\RPG\Temp\UnityVS_bin\Debug\UnityEditor.xml
-E:\Documents\GitHub\RPG\obj\Debug\UnityVS.RPG.CSharp.Plugins.csprojResolveAssemblyReference.cache
-E:\Documents\GitHub\RPG\obj\Debug\Assembly-CSharp-firstpass.dll
-E:\Documents\GitHub\RPG\obj\Debug\Assembly-CSharp-firstpass.pdb

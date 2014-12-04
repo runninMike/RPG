@@ -4,6 +4,6 @@ using System.Collections;
 public class NpcMoveRoll : Die {
 		// Use this for initialization
 	void Start () {
-		base.sides = 8;
+		base.sides = 7;
 	}	
 }
