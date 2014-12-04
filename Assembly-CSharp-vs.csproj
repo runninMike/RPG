@@ -48,6 +48,8 @@
   <ItemGroup>
      <Compile Include="Assets\Collider.cs" />
      <Compile Include="Assets\Important Scripts\AIGhostController.cs" />
+     <Compile Include="Assets\Important Scripts\AiEnemyController.cs" />
+     <Compile Include="Assets\Important Scripts\AiEnemyGhostController.cs" />
      <Compile Include="Assets\Important Scripts\AiNpcController.cs" />
      <Compile Include="Assets\Important Scripts\BattleScript.cs" />
      <Compile Include="Assets\Important Scripts\D20.cs" />

@@ -53,14 +53,30 @@ public class SpriteAnimation : MonoBehaviour{
 			spriteRenderer.sprite = sprites [index + ((int)frameOffset * framesPerAnimation)];
 		}
 		else{
-			if(currentTravelDirection == travelDirection.DOWN)
-				spriteRenderer.sprite = sprites[1];
-			else if(currentTravelDirection == travelDirection.LEFT)
-				spriteRenderer.sprite = sprites[4];
-			else if(currentTravelDirection == travelDirection.RIGHT)
-				spriteRenderer.sprite = sprites[7];
-			else if(currentTravelDirection == travelDirection.UP)
-				spriteRenderer.sprite = sprites[10];
+			if(currentTravelDirection == travelDirection.DOWN){
+				if(framesPerAnimation == 4)
+					spriteRenderer.sprite = sprites[0];
+				else
+					spriteRenderer.sprite = sprites[1];
+			}
+			else if(currentTravelDirection == travelDirection.LEFT){
+				if(framesPerAnimation == 4)
+					spriteRenderer.sprite = sprites[4];
+				else
+					spriteRenderer.sprite = sprites[4];
+			}
+			else if(currentTravelDirection == travelDirection.RIGHT){
+				if(framesPerAnimation == 4)
+					spriteRenderer.sprite = sprites[8];
+				else
+					spriteRenderer.sprite = sprites[7];
+			}
+			else if(currentTravelDirection == travelDirection.UP){
+				if(framesPerAnimation == 4)
+					spriteRenderer.sprite = sprites[12];
+				else
+					spriteRenderer.sprite = sprites[10];
+			}
 		}
 	}
 }
