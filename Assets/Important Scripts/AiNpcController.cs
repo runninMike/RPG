@@ -4,17 +4,15 @@ using System.Collections;
 public class AiNpcController : MonoBehaviour {
 
 	Vector2 position;
-	float speed = 1.0f;	
-	
+	float speed = 1.0f;		
 	
 	// control movement direction
-	public float minSecond = 1.0f;
-	public float maxSecond = 2.0f;
+	public float minSecond = 2.0f;
+	public float maxSecond = 5.0f;
 	float travelDirectionTimer;
 	float travelTime = 0.0f;
 
 	SpriteAnimation.travelDirection direction;
-
 
 	public float Speed{
 		get{ return speed; }
@@ -66,47 +64,72 @@ public class AiNpcController : MonoBehaviour {
 					break;
 			}
 
+			Random.seed = System.DateTime.Now.Millisecond;
+			travelDirectionTimer = Random.Range(minSecond, maxSecond);
+			travelTime = 0.0f;
 		}
 
-		GetComponentInChildren<AIGhostController>().UpdateMovement();	
+		// see if ghost trigger any collision detector
+		GetComponentInChildren<AIGhostController>().UpdateMovement(direction);	
 	
-		if(GetComponentInChildren<AIGhostController>().isCollisionTrigger)
-			ReverseMovement();
-		else
-			ProcessInput();
+		if(GetComponentInChildren<AIGhostController>().isCollisionTrigger){
+			// reverse movement
+			if(direction == SpriteAnimation.travelDirection.RIGHT) {
+				position -= Vector2.right * speed;
+				direction = SpriteAnimation.travelDirection.LEFT;
+				processMovement(direction, position);
+			}
+			else if(direction == SpriteAnimation.travelDirection.LEFT) {
+				position += Vector2.right * speed;
+				direction = SpriteAnimation.travelDirection.RIGHT;
+				processMovement(direction, position);
+			}
+			else if(direction == SpriteAnimation.travelDirection.UP) {
+				position -= Vector2.up * speed;
+				direction = SpriteAnimation.travelDirection.DOWN;
+				processMovement(direction, position);
+			}
+			else if(direction == SpriteAnimation.travelDirection.DOWN) {
+				position += Vector2.up * speed;
+				direction = SpriteAnimation.travelDirection.UP;
+				processMovement(direction, position);
+			}
+			else if(direction == SpriteAnimation.travelDirection.STAND) {
+				processMovement(direction, position);
+			}
+		}
+		else{
+			if(direction == SpriteAnimation.travelDirection.RIGHT) {
+				position += Vector2.right * speed;
+				processMovement(direction, position);
+			}
+			else if(direction == SpriteAnimation.travelDirection.LEFT) {
+				position -= Vector2.right * speed;
+				processMovement(direction, position);
+			}
+			else if(direction == SpriteAnimation.travelDirection.UP) {
+				position += Vector2.up * speed;
+				processMovement(direction, position);
+			}
+			else if(direction == SpriteAnimation.travelDirection.DOWN) {
+				position -= Vector2.up * speed;
+				processMovement(direction, position);
+			}
+			else if(direction == SpriteAnimation.travelDirection.STAND) {
+				processMovement(direction, position);
+			}
 
+		}
 	}
 	
-	private void ProcessInput(){		
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-			position += Vector2.right * speed;
-			allowMovement(KeyCode.D, position);
-		}
-		else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-			position -= Vector2.right * speed;
-			allowMovement(KeyCode.A, position);
-		}
-		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-			position += Vector2.up * speed;
-			allowMovement(KeyCode.W, position);
-		}
-		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
-			position -= Vector2.up * speed;
-			allowMovement(KeyCode.S, position);
-		}
-
-	}
-	
-
-	void ReverseMovement(){
-		SpriteAnimation.isStandingStill = true;
-	}
 		
-	public void allowMovement(SpriteAnimation.travelDirection dir, Vector2 newPosition){
+	public void processMovement(SpriteAnimation.travelDirection dir, Vector2 newPosition){
 		if (dir == SpriteAnimation.travelDirection.STAND)
-			SpriteAnimation.isStandingStill = false;
-		else			
+			SpriteAnimation.isStandingStill = true;
+		else{			
 			SpriteAnimation.currentTravelDirection = dir;
+			SpriteAnimation.isStandingStill = false;
+		}
 
 		transform.position = newPosition;
 	}
