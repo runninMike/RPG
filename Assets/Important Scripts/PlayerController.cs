@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour {
 		// First store our current position when the
 		// script is initialized.
 		position = transform.position;
-		SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
-		SpriteAnimation.isStandingStill = true;
+		gameObject.GetComponent<SpriteAnimation>().currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
+		gameObject.GetComponent<SpriteAnimation>().isStandingStill = true;
 	}
 
 	void Update(){
@@ -55,23 +55,23 @@ public class PlayerController : MonoBehaviour {
 	
 
 	void stopMovement(){
-		SpriteAnimation.isStandingStill = true;
+		gameObject.GetComponent<SpriteAnimation>().isStandingStill = true;
 	}
 		
 	public void allowMovement(KeyCode keyPressed, Vector2 newPosition){
 		if (keyPressed == KeyCode.D){
-			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.RIGHT;
+			gameObject.GetComponent<SpriteAnimation>().currentTravelDirection = SpriteAnimation.travelDirection.RIGHT;
 		}
 		else if (keyPressed == KeyCode.A){
-			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.LEFT;
+			gameObject.GetComponent<SpriteAnimation>().currentTravelDirection = SpriteAnimation.travelDirection.LEFT;
 		}
 		else if (keyPressed == KeyCode.W){
-			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.UP;
+			gameObject.GetComponent<SpriteAnimation>().currentTravelDirection = SpriteAnimation.travelDirection.UP;
 		}		
 		else if (keyPressed == KeyCode.S){
-			SpriteAnimation.currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
+			gameObject.GetComponent<SpriteAnimation>().currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
 		}
-		SpriteAnimation.isStandingStill = false;
+		gameObject.GetComponent<SpriteAnimation>().isStandingStill = false;
 
 		transform.position = newPosition;
 	}

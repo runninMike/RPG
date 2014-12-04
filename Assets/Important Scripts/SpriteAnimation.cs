@@ -6,11 +6,11 @@ public class SpriteAnimation : MonoBehaviour{
 	public float fps;
 	public int framesPerAnimation;			// number of frames per animation sequence
 
-	public static bool isStandingStill = false;
+	public bool isStandingStill = false;
 
 	// the sprite current travling direction
 	public enum travelDirection{ DOWN, LEFT, RIGHT, UP, STAND};
-	public static travelDirection currentTravelDirection;  
+	public travelDirection currentTravelDirection;  
 
 	// enum based on how unity split the spritesheet
 	// to get the correct movement sprite, unity split spritesheet into a single dimension array

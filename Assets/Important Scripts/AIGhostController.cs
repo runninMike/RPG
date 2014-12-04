@@ -14,29 +14,23 @@ public class AIGhostController : MonoBehaviour {
 		position = transform.position;
 		speed = this.transform.parent.GetComponent<AiNpcController>().Speed;
 	}
+	
 
-	//void Update(){}
-
-	KeyCode keyPressed;
-	public void UpdateMovement(){
+	public void UpdateMovement(SpriteAnimation.travelDirection direction){
 		position = this.transform.parent.transform.position;
 
-		// get next movement and update transform so trigger events are checked
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+		// get next movement and update transform so trigger events are checked		
+		if(direction == SpriteAnimation.travelDirection.RIGHT) {
 			position += Vector2.right * speed;
-			keyPressed = KeyCode.D;
-		}		
-		else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+		}
+		else if(direction == SpriteAnimation.travelDirection.LEFT) {
 			position -= Vector2.right * speed;
-			keyPressed = KeyCode.A;
 		}
-		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+		else if(direction == SpriteAnimation.travelDirection.UP) {
 			position += Vector2.up * speed;
-			keyPressed = KeyCode.W;
 		}
-		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+		else if(direction == SpriteAnimation.travelDirection.DOWN) {
 			position -= Vector2.up * speed;
-			keyPressed = KeyCode.S;
 		}
 		
 		transform.position = position;
@@ -48,7 +42,6 @@ public class AIGhostController : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D col){
-		GetComponentInParent<AiNpcController>().allowMovement(keyPressed, transform.position);
 		isCollisionTrigger = false;
 	}		
 

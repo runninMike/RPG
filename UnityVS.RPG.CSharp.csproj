@@ -61,8 +61,11 @@
     <Compile Include="Assets\Important Scripts\AIGhostController.cs" />
     <Compile Include="Assets\Important Scripts\AiNpcController.cs" />
     <Compile Include="Assets\Important Scripts\BattleScript.cs" />
+    <Compile Include="Assets\Important Scripts\D20.cs" />
+    <Compile Include="Assets\Important Scripts\D4.cs" />
     <Compile Include="Assets\Important Scripts\Die.cs" />
     <Compile Include="Assets\Important Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Important Scripts\EnemyCoord.cs" />
     <Compile Include="Assets\Important Scripts\GameMasterController.cs" />
     <Compile Include="Assets\Important Scripts\GhostController.cs" />
     <Compile Include="Assets\Important Scripts\HitRoll.cs" />

@@ -1,3 +1,7 @@
 Base path: G:/Unity4_3/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-1-2796
+Pipe name: \\.\pipe\UnityShaderCompiler-1-6652
 Cmd: getPlatforms
+Cmd: preprocess
+  insize=2850 outsize=848 ok=1
+
+Quitting shader compiler process
