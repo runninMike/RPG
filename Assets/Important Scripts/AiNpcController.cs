@@ -12,6 +12,8 @@ public class AiNpcController : MonoBehaviour {
 	float travelDirectionTimer;
 	float travelTime = 0.0f;
 
+	float objectStartTime; 
+
 	SpriteAnimation.travelDirection direction;
 
 	public float Speed{
@@ -32,10 +34,13 @@ public class AiNpcController : MonoBehaviour {
 		Random.seed = System.DateTime.Now.Millisecond;
 		travelDirectionTimer = Random.Range(minSecond, maxSecond);
 		travelTime += travelDirectionTimer + 1.0f;
+
+		objectStartTime = Time.unscaledTime;
 	}
 
 	void Update(){
-		travelTime += Time.deltaTime;
+
+		travelTime += (Time.unscaledTime - objectStartTime) / 1000.0f;
 
 		if(travelTime >= travelDirectionTimer){
 			gameObject.GetComponent<SpriteAnimation>().isStandingStill = false;
@@ -73,6 +78,7 @@ public class AiNpcController : MonoBehaviour {
 		GetComponentInChildren<AIGhostController>().UpdateMovement(direction);	
 	
 		if(GetComponentInChildren<AIGhostController>().isCollisionTrigger){
+			Debug.Log("hey you hit something. turn around");
 			// reverse movement
 			if(direction == SpriteAnimation.travelDirection.RIGHT) {
 				position -= Vector2.right * speed;
@@ -98,7 +104,7 @@ public class AiNpcController : MonoBehaviour {
 				processMovement(direction, position);
 			}
 
-			GetComponentInChildren<AIGhostController>().isCollisionTrigger = false;
+			//GetComponentInChildren<AIGhostController>().isCollisionTrigger = false;
 		}
 		else{
 			if(direction == SpriteAnimation.travelDirection.RIGHT) {

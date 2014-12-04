@@ -17,6 +17,8 @@ public class AiEnemyController : MonoBehaviour{
 	float travelDirectionTimer;
 	float travelTime = 0.0f;
 
+	float objectStartTime;
+
 	SpriteAnimation.travelDirection direction;
 
 	public float Speed{
@@ -42,6 +44,8 @@ public class AiEnemyController : MonoBehaviour{
 			minSecond = 3.0f;
 			maxSecond = 7.0f;
 		}
+
+		objectStartTime = Time.unscaledTime;
 	}
 
 	void Update(){
@@ -54,7 +58,7 @@ public class AiEnemyController : MonoBehaviour{
 	}
 
 	void NormalMovement(){
-		travelTime += Time.deltaTime;
+		travelTime += (Time.unscaledTime - objectStartTime) / 1000.0f;
 
 		if(travelTime >= travelDirectionTimer){
 			gameObject.GetComponent<SpriteAnimation>().isStandingStill = false;
@@ -176,7 +180,7 @@ public class AiEnemyController : MonoBehaviour{
 				processMovement(direction, position);
 			}
 
-			GetComponentInChildren<AiEnemyGhostController>().isCollisionTrigger = false;
+			//GetComponentInChildren<AiEnemyGhostController>().isCollisionTrigger = false;
 		}
 		else{
 			if(direction == SpriteAnimation.travelDirection.RIGHT) {
