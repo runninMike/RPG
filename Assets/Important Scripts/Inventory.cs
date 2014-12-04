@@ -3,19 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
-	public List<Item> inventory = new List<Item>();
-	private ItemDatabase database;
 	private bool showInventory = false;
-
-	// Use this for initialization
-	void Start () 
-    {
-		database = GameObject.FindGameObjectWithTag ("Item Database").GetComponent<ItemDatabase> (); 
-		inventory.Add (database.items [0]);
-		inventory.Add (database.items [1]);
-		print (inventory[0].itemName); 
-		print (inventory[1].itemName); 
-	}
+    public GUISkin Menu;
 
 	void Update()
     {
@@ -25,16 +14,20 @@ public class Inventory : MonoBehaviour {
 	//the gui for Inventory
 	void OnGUI () 
     {
-		if (showInventory) 
-			DrawInventory();
+        GUI.skin = Menu;
 
-		for (int i = 0; i < inventory.Count; i++)
-			GUI.Label(new Rect(10, i * 20, 200, 50), inventory[i].itemName);
+		if (showInventory)
+        {
+            DrawInventory();
+        }
 	}
 
 	void DrawInventory()
     {
-		for (int x = 0; x < 10; x++)
-			GUI.Box(new Rect(20, x * 20, 20, 20), "Inventory");	
+		GUI.Box(new Rect((Screen.width - (Screen.width / 2)), (Screen.height - (Screen.height / 2)), 200, 300), "Samsung");
+
+        GUI.color = Color.red;
+        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + 76)), (Screen.height - ((Screen.height / 2) - 60)), 200, 200), "Whiskey: 4");
+        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + 76)), (Screen.height - ((Screen.height / 2) - 80)), 200, 200), "Health: 100");
 	}
 }
