@@ -1,2 +1,0 @@
-4.5.4f1:1.9.2.0
-F:/Unity4_3/Data/Managed/UnityEditor.Graphs.dll

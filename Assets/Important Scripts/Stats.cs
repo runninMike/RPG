@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Stats : MonoBehaviour {
-	public static int hp = 0;
-	public static int whiskey = 0;
-
+public class Stats : MonoBehaviour 
+{
+    public static int health = 100;
+    public static int whiskey = 4;
 }

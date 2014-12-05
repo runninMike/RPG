@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour {
 		GUI.Box(new Rect((Screen.width - (Screen.width / 2)), (Screen.height - (Screen.height / 2)), 200, 300), "Samsung");
 
         GUI.color = Color.red;
-        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + 76)), (Screen.height - ((Screen.height / 2) - 60)), 200, 200), "Whiskey: 4");
-        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + 76)), (Screen.height - ((Screen.height / 2) - 80)), 200, 200), "Health: 100");
+        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + 76)), (Screen.height - ((Screen.height / 2) - 60)), 200, 200), "Whiskey: " + Stats.whiskey);
+        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + 76)), (Screen.height - ((Screen.height / 2) - 80)), 200, 200), "Health: " + Stats.health);
 	}
 }

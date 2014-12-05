@@ -10,9 +10,8 @@ public class BattleScript : MonoBehaviour
     int enemyCount = 0;
     const int buttonWidth = 130;
     const int buttonHeight = 100;
-    static int playerHP = 100;
-    int[] enemyHP = {50 , 50};
-    static int whiskey = 4;
+    int[] enemyHP = {50 , 0};
+    int bossHP = 200;
 
     //******************************************************************
     public int x = 0;
@@ -27,7 +26,7 @@ public class BattleScript : MonoBehaviour
     public int y5 = 0;
     //******************************************************************
     void Start()
-    {
+    { 
         //this is the enemy number dice roll
         GameObject.FindGameObjectWithTag("D4").GetComponent<D4>().Roll();
         switch(GameObject.FindGameObjectWithTag("D4").GetComponent<D4>().RollResult){
@@ -47,15 +46,24 @@ public class BattleScript : MonoBehaviour
 
     void Update()
     {
-        if (enemyHP[0] <= 0 && enemyHP[1] <= 0)
+        //turn status
+        if (isPlayerTurn)
+            GUI.Label(new Rect(x5, y5, 100, 100), "dsklfdsklf");
+
+        //win/lose conditions
+        if (enemyHP[0] == 0 && enemyHP[1] == 0)
         {
-            Application.LoadLevel("testScene3");
+            Application.LoadLevel("Victory");
+        }
+
+        if (Stats.health <= 0)
+        {
+            Application.LoadLevel("GameOver");
         }
     }
 
     void OnGUI()
     {
-        GUI.Label(new Rect(x5,y5, 100, 100), "dsklfdsklf");
         //*************************************COMBAT*****************************************
         // Determine the button's place on screen
         // Center in x, 2/3 of the height in Y
@@ -108,6 +116,7 @@ public class BattleScript : MonoBehaviour
             {
                 if (isPlayerTurn)
                 {
+                    enemyHP[1] = 50;
                     //this is the players dice roll
                     GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
                     roll1 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
@@ -148,7 +157,7 @@ public class BattleScript : MonoBehaviour
 
                 //checks if enemy hits or not
                 if (roll2 >= roll1)
-                    playerHP -= 10;
+                    Stats.health -= 10;
 
                 else
                     Debug.Log("Enemy missed!");
@@ -161,13 +170,20 @@ public class BattleScript : MonoBehaviour
         {
 
             //heals the player
-            if (whiskey > 0)
+            if (Stats.whiskey > 0)
             {
-                playerHP += 10;
-                whiskey--;
-            }
+                if (Stats.health < 100)
+                {
+                    if (Stats.health > 90)
+                        Stats.health = 100;
+                    else
+                        Stats.health += 10;
 
-            isPlayerTurn = false;
+                    Stats.whiskey--;
+                }
+
+                isPlayerTurn = false;
+            }
         }
         
         //run button
@@ -176,9 +192,9 @@ public class BattleScript : MonoBehaviour
             if (isPlayerTurn)
             {
                 GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
-                if (GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult == 20)
+                if (GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult == 10)
                 {
-                    Debug.Log("run");  // end battle player get's nothing and  enemy is destoryed.  
+                    Debug.Log("run");  // end battle player get's nothing and  enemy is destroyed.  
                     Application.LoadLevel("testScene3");
                 }               
                 isPlayerTurn = false;
