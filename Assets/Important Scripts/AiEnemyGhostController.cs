@@ -15,7 +15,7 @@ public class AiEnemyGhostController : MonoBehaviour {
 	}
 	
 
-	public void UpdateMovement(SpriteAnimation.travelDirection direction){
+	public void UpdateMovement(SpriteAnimation.travelDirection direction){		
 		position = this.transform.parent.transform.position;
 
 		// get next movement and update transform so trigger events are checked		

@@ -43,7 +43,5 @@ public class AIGhostController : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D col){
 		isCollisionTrigger = false;
-	}		
-
-
+	}	
 }
