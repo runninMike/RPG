@@ -14,10 +14,15 @@ public class BattleScript : MonoBehaviour
     int[] enemyHP = {0 , 0};		// value set in start()
     int bossHP = 200;
 
+    //for gunshot audio
+    public AudioClip gunShotSound;
+    public AudioClip enemyGunSound;
+    public AudioClip gettingHit;
+
 	int enemyDamage = 20;
 	int heroDamage = 10;
 
-	int WhiskeyHP = 10;
+	int WhiskeyHP = 25;
 
 	public int EnemyDamage{ get{ return enemyDamage; } }
 
@@ -31,7 +36,7 @@ public class BattleScript : MonoBehaviour
 
 
 	// timer for the enemy turn
-	float timeLimtior = 0.5f;
+	float timeLimtior = 2.0f;
 	float timer = 0.0f;
 	public bool timerOn = false;
 	bool enemyTurn = false;
@@ -156,6 +161,7 @@ public class BattleScript : MonoBehaviour
 			{
 				if (isPlayerTurn)
 				{
+
 					//this is the players dice roll
 					GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
 					roll1 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
@@ -175,6 +181,10 @@ public class BattleScript : MonoBehaviour
 									new Vector3(GameObject.Find("enemy1").transform.position.x, 
 												GameObject.Find("enemy1").transform.position.y, 0.0f),
 									Quaternion.identity);
+                      
+                        //plays the sound of the players gun
+                        audio.PlayOneShot(gunShotSound);
+
 						enemyHP[0] -= enemyDamage;						
 					}
                 	else{
@@ -211,8 +221,14 @@ public class BattleScript : MonoBehaviour
 									new Vector3(GameObject.Find("enemy2").transform.position.x, 
 												GameObject.Find("enemy2").transform.position.y, 0.0f),
 									Quaternion.identity);
+                       
+                        //plays the sound of the players gun
+                        audio.PlayOneShot(gunShotSound);
+
+
                         enemyHP[1] -= enemyDamage;						
 					}
+
 					else{
 						timerOn = true;
 					}
@@ -243,6 +259,11 @@ public class BattleScript : MonoBehaviour
 					GameObject obj = Resources.Load<GameObject>("HeroDamageAnimator");					
 					obj.GetComponent<HeroDamageAnimator>().heroDamage = heroDamage;
 					Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                    
+                    //sound of enemy gun
+                    audio.PlayOneShot(enemyGunSound);
+                    //getting hit sound
+                    audio.PlayOneShot(gettingHit);
 
 					Stats.health -= heroDamage;
 				}
@@ -253,7 +274,7 @@ public class BattleScript : MonoBehaviour
         }
 
         //use item, end turn
-        if (GUI.Button(whiskeyRect, "Whiskey"))
+        if (GUI.Button(whiskeyRect, "Whiskey\nHealth:" + Stats.health))
         {
             //heals the player
             if (Stats.whiskey > 0)
@@ -263,7 +284,7 @@ public class BattleScript : MonoBehaviour
                     if (Stats.health > 90)
                         Stats.health = 100;
                     else
-                        Stats.health += WhiskeyHP;
+                        Stats.health += 50;
 
 					GameObject obj = Resources.Load<GameObject>("WhiskeyHPAnimator");					
 					obj.GetComponent<WhiskeyHPAnimator>().healthPoint = WhiskeyHP;

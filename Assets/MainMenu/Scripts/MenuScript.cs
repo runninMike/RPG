@@ -5,8 +5,26 @@ public class MenuScript : MonoBehaviour
 {
     public int x = 0;
     public int y = 0;
+    public AudioClip menuPress;
+    bool soundPlayed = false;
+    string hover;
+
+    void Update()
+    {
+        if (hover == "Battle" && !soundPlayed)
+        {
+            soundPlayed = true;
+            audio.PlayOneShot(menuPress);
+        }
+
+        if (hover == "") //or whatever it returns when you are not over a button.
+        {
+            soundPlayed = false;
+        }
+    }
 	void OnGUI()
 	{
+        hover = GUI.tooltip;
 		const int buttonWidth = 84;
 		const int buttonHeight = 60;
 
@@ -33,6 +51,9 @@ public class MenuScript : MonoBehaviour
 		// Draw button to start the game
 		if (GUI.Button (buttonRect, "Battle!"))
 		{
+            //sound on click
+            audio.PlayOneShot(menuPress);
+
 			// Load first level on click
 			//Level1 is a test name
 			Application.LoadLevel("BattleTest");
@@ -40,6 +61,9 @@ public class MenuScript : MonoBehaviour
 
 		if (GUI.Button (buttonRect2, "Town!"))
 		{
+            //sound on click
+            audio.PlayOneShot(menuPress);
+
 			// Load first level on click
 			//Level1 is a test name
 			Application.LoadLevel("testScene3");

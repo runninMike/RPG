@@ -26,8 +26,10 @@ public class VictoryGUI : MonoBehaviour {
         GUI.Box(new Rect((Screen.width - ((Screen.width / 2) + x1)), (Screen.height - ((Screen.height / 2) + y1)), 200, 300), "You gained:");
 
         GUI.color = Color.red;
-        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + x2)), (Screen.height - ((Screen.height / 2) - y2)), 200, 200), "Whiskey: +2");
-        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + x2)), (Screen.height - ((Screen.height / 2) - y2 - 20)), 200, 200), "Experience: +100");
+        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + x2)), (Screen.height - ((Screen.height / 2) - y2)), 200, 200), "Whiskey: +4");
+        Stats.whiskey += 4;
+        GUI.Label(new Rect(((Screen.width - (Screen.width / 2) + x2)), (Screen.height - ((Screen.height / 2) - y2 - 20)), 200, 200), "Experience: +250");
+        Stats.exp += 250;
 
         // Draw button to restart the game
         if (GUI.Button(buttonRect, "Continue"))
