@@ -30,8 +30,8 @@ public class BattleScript : MonoBehaviour
 	public BattleType battleType;
 
 
-	// timer
-	float timeLimtior = 0.2f;
+	// timer for the enemy turn
+	float timeLimtior = 0.5f;
 	float timer = 0.0f;
 	public bool timerOn = false;
 	bool enemyTurn = false;

@@ -14,7 +14,7 @@ public class ShootingAnimation : MonoBehaviour {
 	// coodinates for damage indicator animation
 	int x_e1hl = -30;		// x enemy 1 hit label
 	int y_e1hl = -40;		// y enemy 1 hit label
-	int x_e2hl = 55;		// x enemy 2 hit label  
+	int x_e2hl = 53;		// x enemy 2 hit label  
 	int y_e2hl = -40;		// y enemy 2 hit label  note: to go up it's minus y
 
 	// Use this for initialization
