@@ -20,6 +20,6 @@ public class WhiskeyHPAnimator : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		GUI.Label(new Rect((Screen.width / 2), Screen.height + counter, 100, 100), "<color=green><size=40>" + "+" + healthPoint.ToString() + "</size></color>");
+		GUI.Label(new Rect((Screen.width / 2), Screen.height - 100 + counter, 100, 100), "<color=green><size=40>" + "+" + healthPoint.ToString() + "</size></color>");
 	}
 }

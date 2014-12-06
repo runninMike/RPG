@@ -18,6 +18,6 @@ public class HeroDamageAnimator : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		GUI.Label(new Rect((Screen.width / 2), Screen.height + counter, 100, 100), "<color=red><size=40>" + "-" + heroDamage.ToString() + "</size></color>");
+		GUI.Label(new Rect((Screen.width / 2), Screen.height - 100 + counter, 100, 100), "<color=red><size=40>" + "-" + heroDamage.ToString() + "</size></color>");
 	}
 }
