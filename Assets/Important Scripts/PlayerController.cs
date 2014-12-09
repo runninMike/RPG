@@ -18,6 +18,14 @@ public class PlayerController : MonoBehaviour {
 		// First store our current position when the
 		// script is initialized.
 		position = transform.position;
+		
+		if(ObjPersistenceController.objTranspositionData.Contain(gameObject.Name)){
+			transform.position = ObjPersistenceController.objTranspositionData[gameObject.Name].transform.position;
+		}
+		else{
+			ObjPersistenceController.objTranspositionData.Add(gameObject.Name, transform.position);
+		}
+		
 		gameObject.GetComponent<SpriteAnimation>().currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
 		gameObject.GetComponent<SpriteAnimation>().isStandingStill = true;
 	}
@@ -74,6 +82,8 @@ public class PlayerController : MonoBehaviour {
 		gameObject.GetComponent<SpriteAnimation>().isStandingStill = false;
 
 		transform.position = newPosition;
+		ObjPersistenceController.objTranspositionData[gameObject.Name] = newPosition;
+		
 	}
 
 

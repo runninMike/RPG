@@ -34,7 +34,8 @@ public class AiEnemyController : MonoBehaviour{
 	void Start(){
 		// First store our current position when the
 		// script is initialized.
-		position = transform.position;
+		position = transform.position;		
+		
 		gameObject.GetComponent<SpriteAnimation>().currentTravelDirection = TravelDirection.DOWN;
 		gameObject.GetComponent<SpriteAnimation>().isStandingStill = true;
 
