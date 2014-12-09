@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class HeroDamageAnimator : MonoBehaviour {
-	float timerLimitor = 0.4f;
+	float timerLimitor = 0.7f;
 	float timer = 0.0f;
 
 	int counter = 0;

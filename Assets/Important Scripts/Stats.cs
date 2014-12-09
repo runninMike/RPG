@@ -8,6 +8,12 @@ public class Stats : MonoBehaviour
     public static int exp = 1000;
     public static int level = 0;
 
+    void Start()
+    {
+       GameObject.DontDestroyOnLoad(GameObject.FindGameObjectWithTag("GlobalObj"));
+
+    }
+
     void Update()
     {
         //very simple leveling mechanic

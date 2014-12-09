@@ -38,6 +38,12 @@ public class AiEnemyGhostController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		isCollisionTrigger = true;
+
+        if (col.tag == GameObject.FindGameObjectWithTag("Hero").tag)
+        {
+            Destroy(gameObject);
+            Application.LoadLevel("BattleTest");
+        }
 	}
 
 	void OnTriggerExit2D(Collider2D col){

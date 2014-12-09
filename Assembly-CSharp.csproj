@@ -53,6 +53,7 @@
      <Compile Include="Assets\Important Scripts\AiNpcController.cs" />
      <Compile Include="Assets\Important Scripts\BattleSceneAiAnimator.cs" />
      <Compile Include="Assets\Important Scripts\BattleScript.cs" />
+     <Compile Include="Assets\Important Scripts\ChangeScene.cs" />
      <Compile Include="Assets\Important Scripts\D20.cs" />
      <Compile Include="Assets\Important Scripts\D4.cs" />
      <Compile Include="Assets\Important Scripts\Die.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\Important Scripts\VictoryGUI.cs" />
      <Compile Include="Assets\Important Scripts\WhiskeyHPAnimator.cs" />
      <Compile Include="Assets\Important Scripts\curHP.cs" />
+     <Compile Include="Assets\Important Scripts\logPosition.cs" />
      <Compile Include="Assets\Important Scripts\repeatingRandom.cs" />
      <Compile Include="Assets\MainMenu\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />

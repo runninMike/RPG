@@ -81,14 +81,17 @@ public class BattleScript : MonoBehaviour
 				case 4:
 					enemyCount = 2;
 					break;
-			} 
-
-			enemyCount = 2;
+			}
 
 			// there's always one enemy
 			enemyHP[0] = 100;
-			if(enemyCount == 2)
-				enemyHP[1] = 100;
+            Instantiate(Resources.Load<GameObject>("Enemy1"), new Vector3(0.1636506f, 1.162657f, 0.0f), Quaternion.identity);
+            if (enemyCount == 2)
+            {
+                enemyHP[1] = 100;
+                Instantiate(Resources.Load<GameObject>("Enemy2"), new Vector3(2.588131f, 1.3012f, 0.0f), Quaternion.identity);
+            }
+
 		}
 		else if(battleType == BattleType.BOSS){
 			enemyCount = 1;

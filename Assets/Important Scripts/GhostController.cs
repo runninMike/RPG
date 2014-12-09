@@ -45,6 +45,7 @@ public class GhostController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		isCollisionTrigger = true;
+		//Debug.Log("Colliding with " + col.name);
 	}
 
 	void OnTriggerExit2D(Collider2D col){

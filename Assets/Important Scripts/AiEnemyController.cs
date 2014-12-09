@@ -153,105 +153,40 @@ public class AiEnemyController : MonoBehaviour{
 	}
 
 	// helper method
-	void UpdateGhost(){
+	void UpdateGhost(){				
 		// see if ghost trigger any collision detector
 		GetComponentInChildren<AiEnemyGhostController>().UpdateMovement(direction);	
 	
 		if(GetComponentInChildren<AiEnemyGhostController>().isCollisionTrigger){
-
-			// update ghost until no collision
-			//Vector2 positionState = position;
-			TravelDirection tempDir = direction;
-
-			while(GetComponentInChildren<AiEnemyGhostController>().isCollisionTrigger){
-				//position = positionState;
-				if(direction == TravelDirection.RIGHT){
-					switch(tempDir){
-						case TravelDirection.RIGHT:
-							tempDir = TravelDirection.LEFT;
-							break;
-						case TravelDirection.LEFT:
-							tempDir = TravelDirection.UP;
-							break;
-						case TravelDirection.UP:
-							tempDir = TravelDirection.DOWN;
-							break;
-					}
-				}
-				else if(direction == TravelDirection.LEFT){
-					switch(tempDir){
-						case TravelDirection.LEFT:
-							tempDir = TravelDirection.RIGHT;
-							break;
-						case TravelDirection.RIGHT:
-							tempDir = TravelDirection.DOWN;
-							break;
-						case TravelDirection.DOWN:
-							tempDir = TravelDirection.UP;
-							break;
-					}
-				}
-				else if(direction == TravelDirection.UP){
-					switch(tempDir){
-						case TravelDirection.UP:
-							tempDir = TravelDirection.DOWN;
-							break;
-						case TravelDirection.DOWN:
-							tempDir = TravelDirection.RIGHT;
-							break;
-						case TravelDirection.RIGHT:
-							tempDir = TravelDirection.LEFT;
-							break;
-					}
-				}
-				else if(direction == TravelDirection.DOWN){
-					switch(tempDir){
-						case TravelDirection.DOWN:
-							tempDir = TravelDirection.UP;
-							break;
-						case TravelDirection.UP:
-							tempDir = TravelDirection.LEFT;
-							break;
-						case TravelDirection.LEFT:
-							tempDir = TravelDirection.RIGHT;
-							break;
-					}					
-				}
-				GetComponentInChildren<AiEnemyGhostController>().UpdateMovement(tempDir);
-			}// end while
-
-			direction = tempDir;
-			UpdatePosition();
-
 			//Debug.Log("hey you hit something. turn around");
-			// reverse movement
-			//if(direction == TravelDirection.RIGHT) {
-			//	position -= Vector2.right * speed;
-			//	direction = TravelDirection.LEFT;
-			//	processMovement(direction, position);
-			//}
-			//else if(direction == TravelDirection.LEFT) {
-			//	position += Vector2.right * speed;
-			//	direction = TravelDirection.RIGHT;
-			//	processMovement(direction, position);
-			//}
-			//else if(direction == TravelDirection.UP) {
-			//	position -= Vector2.up * speed;
-			//	direction = TravelDirection.DOWN;
-			//	processMovement(direction, position);
-			//}
-			//else if(direction == TravelDirection.DOWN) {
-			//	position += Vector2.up * speed;
-			//	direction = TravelDirection.UP;
-			//	processMovement(direction, position);
-			//}
-			//else if(direction == TravelDirection.STAND) {
-			//	processMovement(direction, position);
-			//}
+            // reverse movement
+            if (direction == TravelDirection.RIGHT){
+                position -= (Vector2.right + (new Vector2(1.0f, 0.0f))) * speed;
+                direction = TravelDirection.LEFT;
+                processMovement(direction, position);
+            }
+            else if (direction == TravelDirection.LEFT){
+                position += (Vector2.right + (new Vector2(1.0f, 0.0f))) * speed;
+                direction = TravelDirection.RIGHT;
+                processMovement(direction, position);
+            }
+            else if (direction == TravelDirection.UP){
+                position -= (Vector2.up + (new Vector2(0.0f, 1.0f))) * speed;
+                direction = TravelDirection.DOWN;
+                processMovement(direction, position);
+            }
+            else if (direction == TravelDirection.DOWN){
+                position += (Vector2.up + (new Vector2(0.0f, 1.0f))) * speed;
+                direction = TravelDirection.UP;
+                processMovement(direction, position);
+            }
+            else if (direction == TravelDirection.STAND){
+                processMovement(direction, position);
+            }
 		}
 		else{
 			UpdatePosition();
-		}
+		}	
 	}	
 		
 	// helpder method
