@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class WhiskeyHPAnimator : MonoBehaviour {
-	float timerLimitor = 0.5f;
+	float timerLimitor = 0.4f;
 	float timer = 0.0f;
 
 	int counter = 0;
