@@ -7,9 +7,8 @@ public class BattleScript : MonoBehaviour
 {
 
 	// hold enemy object
-	string enemy1str = "Enemy1";
-	string enemy2str = "Enemy2";
-	Dictionary<string, GameObject> enemyObjDic = new Dictionary<string, GameObject>();
+	GameObject enemy1GameObject = null;
+	GameObject enemy2GameObject = null;
 
     bool isPlayerTurn = true;
     int roll1 = 0;
@@ -18,20 +17,12 @@ public class BattleScript : MonoBehaviour
     const int buttonWidth = 130;
     const int buttonHeight = 100;
     int[] enemyHP = {0 , 0};		// value set in start()
-    int bossHP = 200;
 
     //for gunshot audio
     public AudioClip gunShotSound;
     public AudioClip enemyGunSound;
     public AudioClip gettingHit;
-
-	int enemyDamage = 20;
-	int heroDamage = 10;
-
-	int WhiskeyHP = 25;
-
-	public int EnemyDamage{ get{ return enemyDamage; } }
-	public int HeroDamage{ get{ return heroDamage; } }
+	
 
 	public enum WhichEnemy{ ONE, TWO };
 	WhichEnemy whichEnemyGotShot;
@@ -91,21 +82,21 @@ public class BattleScript : MonoBehaviour
 			}
 
 			// there's always one enemy
-			enemyHP[0] = 100;
+			enemyHP[0] = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyHP;
 			// store the first enemy obj
-			enemyObjDic.Add(enemy1str, (GameObject)Instantiate(Resources.Load<GameObject>(enemy1str), new Vector3(0.1636506f, 1.162657f, 0.0f), Quaternion.identity));
+			enemy1GameObject = (GameObject)Instantiate(Resources.Load<GameObject>("Enemy1"), new Vector3(0.1636506f, 1.162657f, 0.0f), Quaternion.identity);
             
             if (enemyCount == 2)
             {
-                enemyHP[1] = 100;
+                enemyHP[1] = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyHP;;
 				// store the second enemy obj
-				enemyObjDic.Add(enemy2str, (GameObject)Instantiate(Resources.Load<GameObject>(enemy2str), new Vector3(2.588131f, 1.3012f, 0.0f), Quaternion.identity));
+				enemy2GameObject = (GameObject)Instantiate(Resources.Load<GameObject>("Enemy2"), new Vector3(2.588131f, 1.3012f, 0.0f), Quaternion.identity);
             }
 
 		}
 		else if(battleType == BattleType.BOSS){
 			enemyCount = 1;
-			enemyHP[0] = bossHP;
+			enemyHP[0] = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().BossHP;;
 		}
 
 		//Debug.Log("Enemy Count: " + enemyCount);
@@ -197,7 +188,7 @@ public class BattleScript : MonoBehaviour
                         //plays the sound of the players gun
                         audio.PlayOneShot(gunShotSound);
 
-						enemyHP[0] -= enemyDamage;						
+						enemyHP[0] -= GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyDamage;						
 					}
                 	else{
 						timerOn = true;
@@ -207,9 +198,8 @@ public class BattleScript : MonoBehaviour
 				}
 			}
 		}// enemy 1
-		else if(enemyObjDic.ContainsKey(enemy1str)){
-			DestroyImmediate(enemyObjDic[enemy1str], true);
-			enemyObjDic.Remove(enemy1str);
+		else if(enemyHP[0] <= 0 && enemy1GameObject != null){
+			Destroy(enemy1GameObject);
 		}
 
 		// button 2
@@ -240,8 +230,7 @@ public class BattleScript : MonoBehaviour
 							//plays the sound of the players gun
 							audio.PlayOneShot(gunShotSound);
 
-
-							enemyHP[1] -= enemyDamage;						
+							enemyHP[1] -= GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyDamage;						
 						}
 
 						else{
@@ -252,9 +241,8 @@ public class BattleScript : MonoBehaviour
 					}
 				}
 			}
-			else if(enemyObjDic.ContainsKey(enemy2str)){
-				DestroyImmediate(enemyObjDic[enemy2str], true);
-				enemyObjDic.Remove(enemy2str);
+			else if(enemyHP[1] <= 0 && enemy2GameObject != null){
+				Destroy(enemy2GameObject);
 			}
         }// 2nd enemy
 
@@ -277,16 +265,16 @@ public class BattleScript : MonoBehaviour
                 if (roll2 >= roll1){
 					// play enemy shooting animation
 					if(i == 0)
-						enemyObjDic[enemy1str].GetComponent<EnemyShootingAnimation>().startAnimation = true;
+						enemy1GameObject.GetComponent<EnemyShootingAnimation>().startAnimation = true;
 					else if(i == 1)
-						enemyObjDic[enemy2str].GetComponent<EnemyShootingAnimation>().startAnimation = true;
+						enemy2GameObject.GetComponent<EnemyShootingAnimation>().startAnimation = true;
                     
 					////sound of enemy gun
 					//audio.PlayOneShot(enemyGunSound);
 					////getting hit sound
 					//audio.PlayOneShot(gettingHit);
 
-					Stats.health -= heroDamage;
+					Stats.health -= GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().HeroDamage;;
 				}
 
             }
@@ -308,7 +296,6 @@ public class BattleScript : MonoBehaviour
                         Stats.health += 50;
 
 					GameObject obj = Resources.Load<GameObject>("WhiskeyHPAnimator");					
-					obj.GetComponent<WhiskeyHPAnimator>().healthPoint = WhiskeyHP;
 					Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
 
                     Stats.whiskey--;

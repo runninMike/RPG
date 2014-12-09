@@ -62,6 +62,7 @@
      <Compile Include="Assets\Important Scripts\EnemyDamageAnimation.cs" />
      <Compile Include="Assets\Important Scripts\EnemyShootingAnimation.cs" />
      <Compile Include="Assets\Important Scripts\GameOverGUI.cs" />
+     <Compile Include="Assets\Important Scripts\GameVariables.cs" />
      <Compile Include="Assets\Important Scripts\GhostController.cs" />
      <Compile Include="Assets\Important Scripts\HeroDamageAnimator.cs" />
      <Compile Include="Assets\Important Scripts\HitRoll.cs" />

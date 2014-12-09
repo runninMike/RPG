@@ -31,10 +31,8 @@ public class EnemyShootingAnimation : MonoBehaviour {
 				}
 				else{
 					Debug.Log(gameObject.name + " hit player");
-					// player got hit
-					GameObject obj = Resources.Load<GameObject>("HeroDamageAnimator");					
-					obj.GetComponent<HeroDamageAnimator>().heroDamage = GameObject.FindGameObjectWithTag("BattleScript").GetComponent<BattleScript>().HeroDamage;
-					Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+					// player got hit				
+					Instantiate(Resources.Load<GameObject>("HeroDamageAnimator"), new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                     
                     // play sfx
 					GameObject.FindGameObjectWithTag("BattleScript").GetComponent<BattleScript>().playBattleSfx();

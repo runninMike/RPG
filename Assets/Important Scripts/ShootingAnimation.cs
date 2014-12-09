@@ -33,7 +33,8 @@ public class ShootingAnimation : MonoBehaviour {
 			}
 			else{
 				// enermy got hit, play damage indicator
-				GameObject obj = Resources.Load<GameObject>("EnemyDamageAnima");
+				GameObject obj;
+				obj = Resources.Load<GameObject>("EnemyDamageAnima");
 
 				if(GameObject.Find("Battle").GetComponent<BattleScript>().WhichEnemyGotShot == BattleScript.WhichEnemy.ONE){
 					obj.GetComponent<EnemyDamageAnimation>().x = x_e1hl;
@@ -43,7 +44,6 @@ public class ShootingAnimation : MonoBehaviour {
 					obj.GetComponent<EnemyDamageAnimation>().x = x_e2hl;
 					obj.GetComponent<EnemyDamageAnimation>().y = y_e2hl;
 				}
-				obj.GetComponent<EnemyDamageAnimation>().enemyDamage = GameObject.Find("Battle").GetComponent<BattleScript>().EnemyDamage;
 				Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
 
 				GameObject.Find("Battle").GetComponent<BattleScript>().timerOn = true;
