@@ -19,13 +19,14 @@ public class PlayerController : MonoBehaviour {
 		// script is initialized.
 		position = transform.position;
 		
-		if(ObjPersistenceController.objTranspositionData.Contain(gameObject.Name)){
-			transform.position = ObjPersistenceController.objTranspositionData[gameObject.Name].transform.position;
+		if(ObjPersistenceController.objTranspositionData.ContainsKey(gameObject.name)){
+			transform.position = ObjPersistenceController.objTranspositionData[gameObject.name];
 		}
 		else{
-			ObjPersistenceController.objTranspositionData.Add(gameObject.Name, transform.position);
+			Debug.Log("add " + gameObject.name + " to dictionary");
+			ObjPersistenceController.objTranspositionData.Add(gameObject.name, transform.position);
 		}
-		
+
 		gameObject.GetComponent<SpriteAnimation>().currentTravelDirection = SpriteAnimation.travelDirection.DOWN;
 		gameObject.GetComponent<SpriteAnimation>().isStandingStill = true;
 	}
@@ -82,7 +83,8 @@ public class PlayerController : MonoBehaviour {
 		gameObject.GetComponent<SpriteAnimation>().isStandingStill = false;
 
 		transform.position = newPosition;
-		ObjPersistenceController.objTranspositionData[gameObject.Name] = newPosition;
+		ObjPersistenceController.objTranspositionData[gameObject.name] = transform.position;
+
 		
 	}
 
