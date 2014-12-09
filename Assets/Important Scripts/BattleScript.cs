@@ -93,14 +93,13 @@ public class BattleScript : MonoBehaviour
 			// there's always one enemy
 			enemyHP[0] = 100;
 			// store the first enemy obj
-			enemyObjDic.Add(enemy1str,Resources.Load<GameObject>(enemy1str));
-            Instantiate(enemyObjDic[enemy1str], new Vector3(0.1636506f, 1.162657f, 0.0f), Quaternion.identity);
+			enemyObjDic.Add(enemy1str, (GameObject)Instantiate(Resources.Load<GameObject>(enemy1str), new Vector3(0.1636506f, 1.162657f, 0.0f), Quaternion.identity));
+            
             if (enemyCount == 2)
             {
                 enemyHP[1] = 100;
 				// store the second enemy obj
-				enemyObjDic.Add(enemy2str, Resources.Load<GameObject>(enemy2str));
-                Instantiate(enemyObjDic[enemy2str], new Vector3(2.588131f, 1.3012f, 0.0f), Quaternion.identity);
+				enemyObjDic.Add(enemy2str, (GameObject)Instantiate(Resources.Load<GameObject>(enemy2str), new Vector3(2.588131f, 1.3012f, 0.0f), Quaternion.identity));
             }
 
 		}
