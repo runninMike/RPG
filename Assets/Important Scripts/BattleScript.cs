@@ -283,7 +283,7 @@ public class BattleScript : MonoBehaviour
         }
 
         //use item, end turn
-        if (GUI.Button(whiskeyRect, "Whiskey\nHealth:" + Stats.health))
+        if (GUI.Button(whiskeyRect, "Whiskey: " + Stats.whiskey + "\nHealth:" + Stats.health))
         {
             //heals the player
             if (Stats.whiskey > 0)
@@ -311,10 +311,11 @@ public class BattleScript : MonoBehaviour
             if (isPlayerTurn)
             {
                 GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
-                if (GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult == 10)
+                roll1 = 20;
+                if (roll1 == 20)
                 {
                     //Debug.Log("run");  // end battle player get's nothing and  enemy is destroyed.  
-                    Application.LoadLevel("testScene3");
+                    Application.LoadLevelAdditive("testScene3");
                 }               
                 isPlayerTurn = false;
             }

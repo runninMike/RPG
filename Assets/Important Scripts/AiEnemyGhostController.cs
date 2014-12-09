@@ -42,7 +42,7 @@ public class AiEnemyGhostController : MonoBehaviour {
         if (col.tag == GameObject.FindGameObjectWithTag("Hero").tag)
         {
             Destroy(gameObject);
-            Application.LoadLevel("BattleTest");
+            Application.LoadLevelAdditive("BattleTest");
         }
 	}
 

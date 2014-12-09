@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	
-	Vector2 position;
+	public static Vector2 position;
 	float speed = 1.0f;	
 	
 	public float Speed{
