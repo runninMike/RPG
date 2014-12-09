@@ -5,6 +5,12 @@ using System.Threading;
 
 public class BattleScript : MonoBehaviour
 {
+
+	// hold enemy object
+	string enemy1str = "Enemy1";
+	string enemy2str = "Enemy2";
+	Dictionary<string, GameObject> enemyObjDic = new Dictionary<string, GameObject>();
+
     bool isPlayerTurn = true;
     int roll1 = 0;
     int roll2 = 0;
@@ -25,6 +31,7 @@ public class BattleScript : MonoBehaviour
 	int WhiskeyHP = 25;
 
 	public int EnemyDamage{ get{ return enemyDamage; } }
+	public int HeroDamage{ get{ return heroDamage; } }
 
 	public enum WhichEnemy{ ONE, TWO };
 	WhichEnemy whichEnemyGotShot;
@@ -85,11 +92,15 @@ public class BattleScript : MonoBehaviour
 
 			// there's always one enemy
 			enemyHP[0] = 100;
-            Instantiate(Resources.Load<GameObject>("Enemy1"), new Vector3(0.1636506f, 1.162657f, 0.0f), Quaternion.identity);
+			// store the first enemy obj
+			enemyObjDic.Add(enemy1str,Resources.Load<GameObject>(enemy1str));
+            Instantiate(enemyObjDic[enemy1str], new Vector3(0.1636506f, 1.162657f, 0.0f), Quaternion.identity);
             if (enemyCount == 2)
             {
                 enemyHP[1] = 100;
-                Instantiate(Resources.Load<GameObject>("Enemy2"), new Vector3(2.588131f, 1.3012f, 0.0f), Quaternion.identity);
+				// store the second enemy obj
+				enemyObjDic.Add(enemy2str, Resources.Load<GameObject>(enemy2str));
+                Instantiate(enemyObjDic[enemy2str], new Vector3(2.588131f, 1.3012f, 0.0f), Quaternion.identity);
             }
 
 		}
@@ -98,7 +109,7 @@ public class BattleScript : MonoBehaviour
 			enemyHP[0] = bossHP;
 		}
 
-		Debug.Log("Enemy Count: " + enemyCount);
+		//Debug.Log("Enemy Count: " + enemyCount);
 
 		// Determine the button's place on screen
 		// Center in x, 2/3 of the height in Y
@@ -152,7 +163,7 @@ public class BattleScript : MonoBehaviour
 		// "<color=red><size=40>Victory!</size></color>"
 		//GUI.Label(new Rect((Screen.width / 2 + x_e1hl), (Screen.height / 2 + y_e1hl), 50, 50), "<color=red>" + "-" + enemyDamage.ToString() + "</color>");
 		//GUI.Label(new Rect((Screen.width / 2 + x_e2hl), (Screen.height / 2 + y_e2hl), 50, 50), "<color=red>" + "-" + enemyDamage.ToString() + "</color>");
-		GUI.Label(labelRect, "Your turn.");
+		//GUI.Label(labelRect, "Your turn.");
 
 
 
@@ -164,7 +175,6 @@ public class BattleScript : MonoBehaviour
 			{
 				if (isPlayerTurn)
 				{
-
 					//this is the players dice roll
 					GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
 					roll1 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
@@ -197,49 +207,57 @@ public class BattleScript : MonoBehaviour
 					isPlayerTurn = false;
 				}
 			}
+		}// enemy 1
+		else if(enemyObjDic.ContainsKey(enemy1str)){
+			DestroyImmediate(enemyObjDic[enemy1str], true);
+			enemyObjDic.Remove(enemy1str);
 		}
 
 		// button 2
-        if (enemyCount > 1 && enemyHP[1] > 0)
-        {
-            if (GUI.Button(enemy2Rect, "Attack\nEnemy 2 HP:" + enemyHP[1]))
-            {
-                if (isPlayerTurn)
-                {
-                    //this is the players dice roll
-                    GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
-                    roll1 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
-                    //Debug.Log("player: " + roll1);
+        if(enemyCount > 1){
+			if(enemyHP[1] > 0){
+				if (GUI.Button(enemy2Rect, "Attack\nEnemy 2 HP:" + enemyHP[1])){
+					if (isPlayerTurn)
+					{
+						//this is the players dice roll
+						GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
+						roll1 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
+						//Debug.Log("player: " + roll1);
 
-                    //enemy's dice roll
-                    GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
-                    roll2 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
-                   //Debug.Log("enemy: " + roll2);
+						//enemy's dice roll
+						GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().Roll();
+						roll2 = GameObject.FindGameObjectWithTag("Roll").GetComponent<HitRoll>().RollResult;
+						//Debug.Log("enemy: " + roll2);
 
-                    //checks if player hits or not
-                    if (roll1 >= roll2){
-						whichEnemyGotShot = WhichEnemy.TWO;
-						// play shooting animation
-						Instantiate(Resources.Load<GameObject>("Andrea"), 
-									new Vector3(GameObject.Find("enemy2").transform.position.x, 
-												GameObject.Find("enemy2").transform.position.y, 0.0f),
-									Quaternion.identity);
+						//checks if player hits or not
+						if (roll1 >= roll2){
+							whichEnemyGotShot = WhichEnemy.TWO;
+							// play shooting animation
+							Instantiate(Resources.Load<GameObject>("Andrea"), 
+										new Vector3(GameObject.Find("enemy2").transform.position.x, 
+													GameObject.Find("enemy2").transform.position.y, 0.0f),
+										Quaternion.identity);
                        
-                        //plays the sound of the players gun
-                        audio.PlayOneShot(gunShotSound);
+							//plays the sound of the players gun
+							audio.PlayOneShot(gunShotSound);
 
 
-                        enemyHP[1] -= enemyDamage;						
+							enemyHP[1] -= enemyDamage;						
+						}
+
+						else{
+							timerOn = true;
+						}
+
+						isPlayerTurn = false;
 					}
-
-					else{
-						timerOn = true;
-					}
-
-                    isPlayerTurn = false;
-                }
-            }
-        }
+				}
+			}
+			else if(enemyObjDic.ContainsKey(enemy2str)){
+				DestroyImmediate(enemyObjDic[enemy2str], true);
+				enemyObjDic.Remove(enemy2str);
+			}
+        }// 2nd enemy
 
         //enemy turn
         if(enemyTurn)
@@ -258,15 +276,16 @@ public class BattleScript : MonoBehaviour
 
                 //checks if enemy hits or not
                 if (roll2 >= roll1){
-					// hero got hit, play damage indicator
-					GameObject obj = Resources.Load<GameObject>("HeroDamageAnimator");					
-					obj.GetComponent<HeroDamageAnimator>().heroDamage = heroDamage;
-					Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+					// play enemy shooting animation
+					if(i == 0)
+						enemyObjDic[enemy1str].GetComponent<EnemyShootingAnimation>().startAnimation = true;
+					else if(i == 1)
+						enemyObjDic[enemy2str].GetComponent<EnemyShootingAnimation>().startAnimation = true;
                     
-                    //sound of enemy gun
-                    audio.PlayOneShot(enemyGunSound);
-                    //getting hit sound
-                    audio.PlayOneShot(gettingHit);
+					////sound of enemy gun
+					//audio.PlayOneShot(enemyGunSound);
+					////getting hit sound
+					//audio.PlayOneShot(gettingHit);
 
 					Stats.health -= heroDamage;
 				}
@@ -315,6 +334,17 @@ public class BattleScript : MonoBehaviour
             }
         }
     }
+
+
+	// allow other class access those sfx
+	public void playBattleSfx(){
+		 //sound of enemy gun
+        audio.PlayOneShot(enemyGunSound);
+        //getting hit sound
+        audio.PlayOneShot(gettingHit);
+	}
+
+
 
 
 }
