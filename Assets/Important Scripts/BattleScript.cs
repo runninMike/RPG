@@ -5,6 +5,12 @@ using System.Threading;
 
 public class BattleScript : MonoBehaviour
 {
+	public int EnemyDamage{get{ return 20; }}
+	public int HeroDamage{get{ return 10; }}
+	public int WhiskeyHP{get{ return 25; }}
+	public int BossHP{get{ return 200; }}
+	public int EnemyHP{get{ return 100; }}
+
 
 	// hold enemy object
 	GameObject enemy1GameObject = null;
@@ -82,13 +88,13 @@ public class BattleScript : MonoBehaviour
 			}
 
 			// there's always one enemy
-			enemyHP[0] = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyHP;
+			enemyHP[0] = EnemyHP;
 			// store the first enemy obj
 			enemy1GameObject = (GameObject)Instantiate(Resources.Load<GameObject>("Enemy1"), new Vector3(0.1636506f, 1.162657f, 0.0f), Quaternion.identity);
             
             if (enemyCount == 2)
             {
-                enemyHP[1] = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyHP;;
+                enemyHP[1] = EnemyHP;;
 				// store the second enemy obj
 				enemy2GameObject = (GameObject)Instantiate(Resources.Load<GameObject>("Enemy2"), new Vector3(2.588131f, 1.3012f, 0.0f), Quaternion.identity);
             }
@@ -96,7 +102,7 @@ public class BattleScript : MonoBehaviour
 		}
 		else if(battleType == BattleType.BOSS){
 			enemyCount = 1;
-			enemyHP[0] = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().BossHP;;
+			enemyHP[0] = BossHP;;
 		}
 
 		//Debug.Log("Enemy Count: " + enemyCount);
@@ -188,7 +194,7 @@ public class BattleScript : MonoBehaviour
                         //plays the sound of the players gun
                         audio.PlayOneShot(gunShotSound);
 
-						enemyHP[0] -= GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyDamage;						
+						enemyHP[0] -= EnemyDamage;						
 					}
                 	else{
 						timerOn = true;
@@ -230,7 +236,7 @@ public class BattleScript : MonoBehaviour
 							//plays the sound of the players gun
 							audio.PlayOneShot(gunShotSound);
 
-							enemyHP[1] -= GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyDamage;						
+							enemyHP[1] -= EnemyDamage;						
 						}
 
 						else{
@@ -274,7 +280,7 @@ public class BattleScript : MonoBehaviour
 					////getting hit sound
 					//audio.PlayOneShot(gettingHit);
 
-					Stats.health -= GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().HeroDamage;;
+					Stats.health -= HeroDamage;;
 				}
 
             }

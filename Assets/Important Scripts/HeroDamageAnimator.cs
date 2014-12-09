@@ -7,7 +7,11 @@ public class HeroDamageAnimator : MonoBehaviour {
 
 	int counter = 0;
 
-	int heroDamage = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().HeroDamage;
+	int heroDamage;
+
+	void Start(){
+		heroDamage = GameObject.FindGameObjectWithTag("BattleScript").GetComponent<BattleScript>().HeroDamage;
+	}
 
 	void Update(){
 		timer += Time.deltaTime;

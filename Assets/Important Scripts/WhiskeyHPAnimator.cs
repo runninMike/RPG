@@ -7,7 +7,11 @@ public class WhiskeyHPAnimator : MonoBehaviour {
 
 	int counter = 0;
 
-	int healthPoint = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().WhiskeyHP;
+	int healthPoint;
+
+	void Start(){
+		healthPoint = GameObject.FindGameObjectWithTag("BattleScript").GetComponent<BattleScript>().WhiskeyHP;
+	}
 
 	void Update(){
 		timer += Time.deltaTime;

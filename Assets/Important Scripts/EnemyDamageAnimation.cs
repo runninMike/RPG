@@ -10,7 +10,11 @@ public class EnemyDamageAnimation : MonoBehaviour {
 
 	int counter = 0;
 
-	int enemyDamage = GameObject.FindGameObjectWithTag("GameVariables").GetComponent<GameVariables>().EnemyDamage;
+	int enemyDamage;
+
+	void Start(){
+		enemyDamage = GameObject.FindGameObjectWithTag("BattleScript").GetComponent<BattleScript>().EnemyDamage;
+	}
 
 	void Update(){
 		timer += Time.deltaTime;

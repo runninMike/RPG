@@ -14,9 +14,12 @@ public class EnemyShootingAnimation : MonoBehaviour {
 
 	public bool startAnimation = false;
 
+	GameObject obj;
+
 	// Use this for initialization
 	void Start (){
 		spriteRenderer = renderer as SpriteRenderer;
+		obj = Resources.Load<GameObject>("HeroDamageAnimator");
 	}
 	
 	// Update is called once per frame
@@ -32,7 +35,7 @@ public class EnemyShootingAnimation : MonoBehaviour {
 				else{
 					Debug.Log(gameObject.name + " hit player");
 					// player got hit				
-					Instantiate(Resources.Load<GameObject>("HeroDamageAnimator"), new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+					Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                     
                     // play sfx
 					GameObject.FindGameObjectWithTag("BattleScript").GetComponent<BattleScript>().playBattleSfx();

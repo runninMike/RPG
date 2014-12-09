@@ -11,6 +11,8 @@ public class ShootingAnimation : MonoBehaviour {
 
 	int index = 1;
 
+	GameObject obj;
+
 	// coodinates for damage indicator animation
 	int x_e1hl = -32;		// x enemy 1 hit label
 	int y_e1hl = -40;		// y enemy 1 hit label
@@ -20,6 +22,7 @@ public class ShootingAnimation : MonoBehaviour {
 	// Use this for initialization
 	void Start (){
 		spriteRenderer = renderer as SpriteRenderer;
+		obj = Resources.Load<GameObject>("EnemyDamageAnima");
 	}
 	
 	// Update is called once per frame
@@ -33,9 +36,6 @@ public class ShootingAnimation : MonoBehaviour {
 			}
 			else{
 				// enermy got hit, play damage indicator
-				GameObject obj;
-				obj = Resources.Load<GameObject>("EnemyDamageAnima");
-
 				if(GameObject.Find("Battle").GetComponent<BattleScript>().WhichEnemyGotShot == BattleScript.WhichEnemy.ONE){
 					obj.GetComponent<EnemyDamageAnimation>().x = x_e1hl;
 					obj.GetComponent<EnemyDamageAnimation>().y = y_e1hl;
